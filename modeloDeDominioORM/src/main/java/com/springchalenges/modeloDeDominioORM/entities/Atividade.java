@@ -2,6 +2,9 @@ package com.springchalenges.modeloDeDominioORM.entities;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name = "tb_atividade")
 public class Atividade {
@@ -16,13 +19,21 @@ public class Atividade {
 
     private String preco;
 
+    @ManyToOne
+    @JoinColumn(name = "categoria_id")
+    private Categoria categoria;
+
+    @OneToMany(mappedBy = "atividade")
+    private List<Bloco> blocos = new ArrayList<>();
+
     public Atividade() {}
 
-    public Atividade(Long id, String name, String descricao, String preco) {
+    public Atividade(Long id, String name, String descricao, String preco, Categoria categoria) {
         this.id = id;
         this.name = name;
         this.descricao = descricao;
         this.preco = preco;
+        this.categoria = categoria;
     }
 
     public Long getId() {
@@ -55,5 +66,17 @@ public class Atividade {
 
     public void setPreco(String preco) {
         this.preco = preco;
+    }
+
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
+    }
+
+    public List<Bloco> getBlocos() {
+        return blocos;
     }
 }
