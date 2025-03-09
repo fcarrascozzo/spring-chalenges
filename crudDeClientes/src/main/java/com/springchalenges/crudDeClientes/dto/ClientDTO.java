@@ -1,10 +1,7 @@
 package com.springchalenges.crudDeClientes.dto;
 
 import com.springchalenges.crudDeClientes.entities.Client;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Positive;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.*;
 
 import java.time.LocalDate;
 
@@ -23,6 +20,7 @@ public class ClientDTO {
     private Double income;
 
     @NotNull(message = "A data de nascimento é obrigatória.")
+    @PastOrPresent
     private LocalDate birthDate;
 
     @Positive(message = "O número de filhos deve ser um valor positivo ou zero.")
