@@ -31,6 +31,10 @@ public class Client {
         this.children = children;
     }
 
+    public Client() {
+
+    }
+
     public Long getId() {
         return id;
     }

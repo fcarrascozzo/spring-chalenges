@@ -16,6 +16,6 @@ public class ClientService {
 
     @Transactional(readOnly = true)
     public ClientDTO findById(Long id) {
-        return new ClientDTO(repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Nenhum Produto encontrado com o ID informado")));
+        return new ClientDTO(repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Nenhum Cliente encontrado com o ID informado")));
     }
 }
