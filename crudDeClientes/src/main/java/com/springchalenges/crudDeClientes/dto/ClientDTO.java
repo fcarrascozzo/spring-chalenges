@@ -23,7 +23,7 @@ public class ClientDTO {
     @PastOrPresent
     private LocalDate birthDate;
 
-    @Positive(message = "O número de filhos deve ser um valor positivo ou zero.")
+    @PositiveOrZero(message = "O número de filhos deve ser um valor positivo ou zero.")
     private Integer children;
 
     public ClientDTO(Long id, String name, String cpf, Double income, LocalDate birthDate, Integer children) {
@@ -43,6 +43,8 @@ public class ClientDTO {
         birthDate = client.getBirthDate();
         children = client.getChildren();
     }
+
+    public ClientDTO() {}
 
     public Long getId() {
         return id;
